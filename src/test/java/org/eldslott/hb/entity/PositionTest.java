@@ -1,13 +1,3 @@
-/*
- * This software is the confidential and proprietary information of
- * Sigma Systems Innovation. ("Confidential Information"). You shall
- * not disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with Sigma Systems Innovation.
- *
- * COPYRIGHT (C) 2014 SIGMA SYSTEMS INNOVATION AB.
- * All rights reserved.
- */
 package org.eldslott.hb.entity;
 
 import junit.framework.TestCase;
@@ -17,7 +7,7 @@ import org.eldslott.hb.concept.Velocity;
 import org.junit.Test;
 
 /**
- * @author <a href="mailto:oscar.eriksson@sigma.se">Oscar Eriksson</a>
+ * @author <a href="mailto:oscar.eriks@gmail.com">Oscar Eriksson</a>
  * @date 12/18/13
  */
 public class PositionTest extends TestCase {

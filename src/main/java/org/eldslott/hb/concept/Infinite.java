@@ -1,7 +1,8 @@
 package org.eldslott.hb.concept;
 
 /**
- * Created by scorch on 12/19/13.
+ * @author <a href="mailto:oscar.eriks@gmail.com">Oscar Eriksson</a>
+ * @date 12/19/13
  */
 public interface Infinite<T> {
     public Infinite higher();
