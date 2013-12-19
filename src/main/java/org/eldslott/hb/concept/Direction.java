@@ -5,5 +5,6 @@ package org.eldslott.hb.concept;
  * @date 12/18/13
  */
 public enum Direction {
-    X, Y ,Z
+    // TODO: need negative X, Y and Z with negative magnitude
+    X, Y ,Z, UP, DOWN, BACK, FORWARD, LEFT, RIGHT
 }

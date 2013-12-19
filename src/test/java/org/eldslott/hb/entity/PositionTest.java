@@ -1,7 +1,6 @@
 package org.eldslott.hb.entity;
 
 import junit.framework.TestCase;
-import org.eldslott.hb.concept.Distance;
 import org.eldslott.hb.concept.Position;
 import org.eldslott.hb.concept.Velocity;
 import org.junit.Test;
@@ -37,19 +36,18 @@ public class PositionTest extends TestCase {
         pos.move(vel);
 
         pos.move(vel);
-        System.out.println(pos);
     }
 
     @Test
     public void testDistance() {
         Position ship    = new Position(-84, -48989, 2450, 0);
-        //Position ship1    = new Position(-3286, 593, -38450, 1);
+        Position station;
 
-        //ship.higher = ship1;
-        //ship1.lower = ship;
-        Position station = new Position(7340, 75, 99, 0);
-
-        Distance distance = ship.distance(station);
-        System.out.println(distance);
+        for (int j = 0; j < 3; j++) {
+            for (int i = 1; i < 500; i++) {
+                station = new Position((Integer.MAX_VALUE/100)*i, 75, 99, j);
+                ship.distance(station);
+            }
+        }
     }
 }

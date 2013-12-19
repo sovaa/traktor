@@ -1,6 +1,10 @@
 package org.eldslott.hb;
 
+import org.eldslott.hb.concept.Moveable;
+import org.eldslott.hb.entity.Ship;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
@@ -10,6 +14,7 @@ import org.lwjgl.opengl.DisplayMode;
  */
 public class Game implements Runnable {
     private static boolean running = true;
+    private Moveable agent;
 
     @Override
     public void run() {
@@ -21,14 +26,23 @@ public class Game implements Runnable {
             System.exit(0);
         }
 
+        agent = new Ship();
+
         // init OpenGL here
 
         while (!Display.isCloseRequested() && Game.isRunning()) {
+
+            pollInput();
+            agent.tick();
+            agent.move();
+
+            Display.setTitle(((Ship) agent).position.toString() + " " + ((Ship) agent).velocity.toString());
+
             // render OpenGL here
             Display.update();
 
             try {
-                Thread.sleep(10);
+                Thread.sleep(50);
             }
             catch (InterruptedException e) {
                 // TODO
@@ -37,6 +51,28 @@ public class Game implements Runnable {
 
         Display.destroy();
     }
+
+    public void pollInput() {
+        if (Mouse.isButtonDown(0)) {
+            int x = Mouse.getX();
+            int y = Mouse.getY();
+
+            System.out.println("MOUSE DOWN @ X: " + x + " Y: " + y);
+        }
+
+        if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+            System.out.println("SPACE KEY IS DOWN");
+        }
+
+        while (Keyboard.next()) {
+            if (Keyboard.getEventKeyState()) {
+                agent.keyDown(Keyboard.getEventKey());
+            } else {
+                agent.keyUp(Keyboard.getEventKey());
+            }
+        }
+    }
+
 
     public static void setRunning(boolean running) {
         Game.running = running;

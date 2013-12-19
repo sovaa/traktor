@@ -14,6 +14,12 @@ public class Position implements Infinite<Map<Direction, Integer>> {
 
     private Map<Direction, Integer> position = new HashMap<>();
 
+    public Position() {
+        position.put(Direction.X, 100);
+        position.put(Direction.Y, 100);
+        position.put(Direction.Z, 100);
+    }
+
     public Position(int x, int y, int z) {
         position.put(Direction.X, x);
         position.put(Direction.Y, y);
@@ -70,6 +76,7 @@ public class Position implements Infinite<Map<Direction, Integer>> {
             higher.add(dir, -1);
             set(dir, Integer.MAX_VALUE - ((Integer.MIN_VALUE - pos) - dpos));
         }
+        // TODO: link lower....
         else {
             set(dir, pos + dpos);
         }
